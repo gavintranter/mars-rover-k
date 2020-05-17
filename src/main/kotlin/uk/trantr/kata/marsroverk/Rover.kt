@@ -7,7 +7,7 @@ class Rover {
     lateinit var position: Position private set
 
     companion object Factory {
-        val rover = Rover()
+        private val rover = Rover()
 
         fun initialise(x: Int, y: Int, heading: Heading): Rover {
             rover.position = Position(x, y, heading)
