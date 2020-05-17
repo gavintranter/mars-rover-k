@@ -8,12 +8,8 @@ import uk.trantr.kata.marsroverk.navigation.Position
 
 object RoverSpec: Spek({
     describe("A Rover") {
-        val rover by memoized { Rover }
-
         describe("being initialised") {
-            beforeEachTest {
-                rover.position = Position(1, 1, E)
-            }
+            val rover = Rover.initialise(1, 1, E)
 
             it("will be at the initial position") {
                 Assertions.assertEquals(rover.position, Position(1, 1, E))
