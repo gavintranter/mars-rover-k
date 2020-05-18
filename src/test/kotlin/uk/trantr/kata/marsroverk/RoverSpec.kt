@@ -19,14 +19,14 @@ object RoverSpec: Spek({
 
         describe("receives command") {
             describe("r") {
-                val dRover: Rover = rover.receive('r')
+                val dRover = rover.receive('r')
                 it("will change heading to S(outh)") {
                     assertEquals(Position(1, 1, S), dRover.position)
                 }
             }
 
             describe("l") {
-                val dRover: Rover = rover.receive('l')
+                val dRover = rover.receive('l')
                 it("will change heading to N(orth)") {
                     assertEquals(Position(1, 1, N), dRover.position)
                 }
