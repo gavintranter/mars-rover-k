@@ -19,7 +19,6 @@ object RoverSpec: Spek({
         }
 
         describe("receives command") {
-
             describe("which is invalid") {
                 it("will thrown an IllegalArgumentException") {
                     assertThrows<IllegalArgumentException> { rover.receive(arrayOf('L')) }

@@ -7,8 +7,8 @@ class Rover(val position: Position) {
         val p = commands.map { Command.from(it) }
             .fold(this.position) { deltaP, next ->
                 when (next) {
-                    Command.r -> deltaP.copy(heading = deltaP.heading.clockwise())
-                    Command.l -> deltaP.copy(heading = deltaP.heading.anticlockwise())
+                    Command.r -> next.execute(deltaP)
+                    Command.l -> next.execute(deltaP)
                 }
             }
 
