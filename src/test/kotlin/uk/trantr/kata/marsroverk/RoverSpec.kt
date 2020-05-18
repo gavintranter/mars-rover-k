@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.assertThrows
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
-import uk.trantr.kata.marsroverk.navigation.Heading.*
+import uk.trantr.kata.marsroverk.navigation.Heading.E
+import uk.trantr.kata.marsroverk.navigation.Heading.N
 import uk.trantr.kata.marsroverk.navigation.Position
 
 object RoverSpec: Spek({
@@ -18,23 +19,36 @@ object RoverSpec: Spek({
         }
 
         describe("receives command") {
-            describe("r") {
-                val dRover = rover.receive('r')
-                it("will change heading to S(outh)") {
-                    assertEquals(Position(1, 1, S), dRover.position)
-                }
-            }
-
-            describe("l") {
-                val dRover = rover.receive('l')
-                it("will change heading to N(orth)") {
-                    assertEquals(Position(1, 1, N), dRover.position)
-                }
-            }
 
             describe("which is invalid") {
                 it("will thrown an IllegalArgumentException") {
-                    assertThrows<IllegalArgumentException> { rover.receive('L') }
+                    assertThrows<IllegalArgumentException> { rover.receive(arrayOf('L')) }
+                }
+            }
+        }
+
+        describe("receives multiple commands") {
+            describe("to move clockwise to each cardinal point in turn") {
+                val dRover = rover.receive(arrayOf('r', 'r', 'r', 'r'))
+
+                it("will be heading E(ast)") {
+                    assertEquals(Position(1, 1, E), dRover.position)
+                }
+            }
+
+            describe("to move anticlockwise to each cardinal point in turn") {
+                val dRover = rover.receive(arrayOf('l', 'l', 'l', 'l'))
+
+                it("will be heading E(ast)") {
+                    assertEquals(Position(1, 1, E), dRover.position)
+                }
+            }
+
+            describe("to move through a sequence of rotations") {
+                val dRover = rover.receive(arrayOf('l', 'l', 'r', 'l', 'r'))
+
+                it("will be heading N(orth))") {
+                    assertEquals(Position(1, 1, N), dRover.position)
                 }
             }
         }

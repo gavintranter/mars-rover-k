@@ -2,7 +2,7 @@ package uk.trantr.kata.marsroverk.navigation
 
 enum class Heading {
     N {
-        override fun anticlockwise() = S
+        override fun anticlockwise() = W
         override fun clockwise() = E
     },
     E {
@@ -11,6 +11,10 @@ enum class Heading {
     },
     S {
         override fun anticlockwise() = E
+        override fun clockwise() = W
+    },
+    W {
+        override fun anticlockwise() = S
         override fun clockwise() = N
     };
 
