@@ -6,11 +6,12 @@ import uk.trantr.kata.marsroverk.navigation.Position
 
 class Rover(val position: Position) {
     fun receive(command: Char): Rover {
-        return if (command == 'r') {
-            Rover(Position(position.x, position.y, S))
-        }
-        else {
-            Rover(Position(position.x, position.y, N))
+        return when (command) {
+            'r' -> Rover(Position(position.x, position.y, S))
+            'l' -> Rover(Position(position.x, position.y, N))
+            else -> {
+                throw IllegalArgumentException("Unknown Command")
+            }
         }
     }
 
