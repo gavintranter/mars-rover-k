@@ -1,17 +1,15 @@
 package uk.trantr.kata.marsroverk
 
-import uk.trantr.kata.marsroverk.navigation.Heading
+import uk.trantr.kata.marsroverk.navigation.Heading.S
 import uk.trantr.kata.marsroverk.navigation.Position
 
-class Rover {
-    lateinit var position: Position private set
+class Rover(val position: Position) {
+    fun receive(command: Char): Rover {
+        println()
+        return Rover(Position(position.x, position.y, S))
+    }
 
-    companion object Factory {
-        private val rover = Rover()
-
-        fun initialise(x: Int, y: Int, heading: Heading): Rover {
-            rover.position = Position(x, y, heading)
-            return rover
-        }
+    override fun toString(): String {
+        return "Rover(position=$position)"
     }
 }
