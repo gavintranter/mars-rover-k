@@ -24,6 +24,14 @@ object RoverSpec: Spek({
                     assertThrows<IllegalArgumentException> { rover.receive(arrayOf('L')) }
                 }
             }
+
+            describe("to move forward") {
+                val dRover = rover.receive(arrayOf('f'))
+
+                it("will move eastward along x axis") {
+                    assertEquals(Position(2, 1, E), dRover.position)
+                }
+            }
         }
 
         describe("receives multiple commands") {
@@ -48,6 +56,14 @@ object RoverSpec: Spek({
 
                 it("will be heading N(orth))") {
                     assertEquals(Position(1, 1, N), dRover.position)
+                }
+            }
+
+            describe("to rotate left and then move forward") {
+                val dRover = rover.receive(arrayOf('l', 'f'))
+
+                it("will move northwards along the y axis") {
+                    assertEquals(Position(1, 2, N), dRover.position)
                 }
             }
         }

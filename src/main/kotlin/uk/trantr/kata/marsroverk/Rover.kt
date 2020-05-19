@@ -1,5 +1,6 @@
 package uk.trantr.kata.marsroverk
 
+import uk.trantr.kata.marsroverk.Command.*
 import uk.trantr.kata.marsroverk.navigation.Position
 
 class Rover(val position: Position) {
@@ -7,8 +8,9 @@ class Rover(val position: Position) {
         val p = commands.map { Command.from(it) }
             .fold(this.position) { deltaP, next ->
                 when (next) {
-                    Command.r -> next.execute(deltaP)
-                    Command.l -> next.execute(deltaP)
+                    r -> next.execute(deltaP)
+                    l -> next.execute(deltaP)
+                    f -> next.execute(deltaP)
                 }
             }
 
