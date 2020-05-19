@@ -8,10 +8,10 @@ class Rover(val position: Position) {
         val p = commands.map { Command.from(it) }
             .fold(this.position) { deltaP, next ->
                 when (next) {
-                    r -> next.execute(deltaP)
-                    l -> next.execute(deltaP)
-                    f -> next.execute(deltaP)
-                    b -> next.execute(deltaP)
+                    RIGHT -> next.execute(deltaP)
+                    LEFT -> next.execute(deltaP)
+                    FORWARD -> next.execute(deltaP)
+                    BACKWARD -> next.execute(deltaP)
                 }
             }
 
