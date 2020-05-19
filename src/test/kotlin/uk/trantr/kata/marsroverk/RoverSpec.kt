@@ -31,6 +31,14 @@ object RoverSpec: Spek({
                     assertEquals(Position(2, 1, E), dRover.position)
                 }
             }
+
+            describe("to move backward") {
+                val dRover = rover.receive(arrayOf('b'))
+
+                it("will move westward along x axis") {
+                    assertEquals(Position(0, 1, E), dRover.position)
+                }
+            }
         }
 
         describe("receives multiple commands") {
@@ -59,10 +67,10 @@ object RoverSpec: Spek({
             }
 
             describe("to sequence of rotations and movements") {
-                val dRover = rover.receive(arrayOf('l', 'f', 'l', 'f', 'l', 'f'))
+                val dRover = rover.receive(arrayOf('b', 'l', 'f', 'l', 'b', 'f', 'l', 'f', 'r', 'b'))
 
                 it("will move northwards along the y axis") {
-                    assertEquals(Position(0, 1, S), dRover.position)
+                    assertEquals(Position(1, 1, W), dRover.position)
                 }
             }
         }

@@ -11,6 +11,9 @@ enum class Command {
     },
     f {
         override fun execute(position: Position) = position.heading.transform().invoke(position)
+    },
+    b {
+        override fun execute(position: Position) = position.heading.transform(-1).invoke(position)
     };
 
     companion object Factory {
@@ -18,6 +21,7 @@ enum class Command {
             'r' -> r
             'l' -> l
             'f' -> f
+            'b' -> b
             else -> throw IllegalArgumentException("Unknown command")
         }
     }

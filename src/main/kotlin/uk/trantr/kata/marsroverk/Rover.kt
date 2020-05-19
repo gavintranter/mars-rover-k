@@ -11,6 +11,7 @@ class Rover(val position: Position) {
                     r -> next.execute(deltaP)
                     l -> next.execute(deltaP)
                     f -> next.execute(deltaP)
+                    b -> next.execute(deltaP)
                 }
             }
 
