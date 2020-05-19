@@ -4,10 +4,10 @@ import uk.trantr.kata.marsroverk.navigation.Position
 
 enum class Command {
     r {
-        override fun execute(position: Position) = position.copy(heading = position.heading.clockwise())
+        override fun execute(position: Position) = position.rotateClockWise()
     },
     l {
-        override fun execute(position: Position) = position.copy(heading = position.heading.anticlockwise())
+        override fun execute(position: Position) = position.rotateAntiClockWise()
     },
     f {
         override fun execute(position: Position) = position.heading.transform().invoke(position)
