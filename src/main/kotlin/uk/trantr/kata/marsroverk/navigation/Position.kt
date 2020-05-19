@@ -1,6 +1,6 @@
 package uk.trantr.kata.marsroverk.navigation
 
-data class Position(val x: Int, val y: Int, val heading: Heading) {
+data class Position(val coordinate: Coordinate, val heading: Heading) {
     fun rotateClockWise(): Position {
         return this.copy(heading = heading.clockwise())
     }

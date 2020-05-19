@@ -4,16 +4,17 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.assertThrows
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
+import uk.trantr.kata.marsroverk.navigation.Coordinate
 import uk.trantr.kata.marsroverk.navigation.Heading.*
 import uk.trantr.kata.marsroverk.navigation.Position
 
 object RoverSpec: Spek({
     describe("A Rover") {
-        val rover by memoized { Rover(Position(1, 1, E)) }
+        val rover by memoized { Rover(Position(Coordinate(1, 1), E)) }
 
         describe("being initialised") {
             it("will be at the initial position") {
-                assertEquals(Position(1, 1, E), rover.position)
+                assertEquals(Position(Coordinate(1, 1), E), rover.position)
             }
         }
 
@@ -28,7 +29,7 @@ object RoverSpec: Spek({
                 val dRover = rover.receive(arrayOf('f'))
 
                 it("will move eastward along x axis") {
-                    assertEquals(Position(2, 1, E), dRover.position)
+                    assertEquals(Position(Coordinate(2, 1), E), dRover.position)
                 }
             }
 
@@ -36,7 +37,7 @@ object RoverSpec: Spek({
                 val dRover = rover.receive(arrayOf('b'))
 
                 it("will move westward along x axis") {
-                    assertEquals(Position(0, 1, E), dRover.position)
+                    assertEquals(Position(Coordinate(0, 1), E), dRover.position)
                 }
             }
         }
@@ -46,7 +47,7 @@ object RoverSpec: Spek({
                 val dRover = rover.receive(arrayOf('r', 'r', 'r', 'r'))
 
                 it("will be heading E(ast)") {
-                    assertEquals(Position(1, 1, E), dRover.position)
+                    assertEquals(Position(Coordinate(1, 1), E), dRover.position)
                 }
             }
 
@@ -54,7 +55,7 @@ object RoverSpec: Spek({
                 val dRover = rover.receive(arrayOf('l', 'l', 'l', 'l'))
 
                 it("will be heading E(ast)") {
-                    assertEquals(Position(1, 1, E), dRover.position)
+                    assertEquals(Position(Coordinate(1, 1), E), dRover.position)
                 }
             }
 
@@ -62,7 +63,7 @@ object RoverSpec: Spek({
                 val dRover = rover.receive(arrayOf('l', 'l', 'r', 'l', 'r'))
 
                 it("will be heading N(orth))") {
-                    assertEquals(Position(1, 1, N), dRover.position)
+                    assertEquals(Position(Coordinate(1, 1), N), dRover.position)
                 }
             }
 
@@ -70,7 +71,7 @@ object RoverSpec: Spek({
                 val dRover = rover.receive(arrayOf('b', 'l', 'f', 'l', 'b', 'f', 'l', 'f', 'r', 'b'))
 
                 it("will move northwards along the y axis") {
-                    assertEquals(Position(1, 1, W), dRover.position)
+                    assertEquals(Position(Coordinate(1, 1), W), dRover.position)
                 }
             }
         }

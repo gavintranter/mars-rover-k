@@ -10,10 +10,10 @@ enum class Command {
         override fun execute(position: Position) = position.rotateAntiClockWise()
     },
     f {
-        override fun execute(position: Position) = position.heading.transform().invoke(position)
+        override fun execute(position: Position) = position.copy(coordinate = position.heading.transform().invoke(position.coordinate))
     },
     b {
-        override fun execute(position: Position) = position.heading.transform(-1).invoke(position)
+        override fun execute(position: Position) = position.copy(coordinate =  position.heading.transform(-1).invoke(position.coordinate))
     };
 
     companion object Factory {
