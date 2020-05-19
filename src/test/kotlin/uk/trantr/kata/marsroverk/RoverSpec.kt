@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.assertThrows
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
-import uk.trantr.kata.marsroverk.navigation.Heading.E
-import uk.trantr.kata.marsroverk.navigation.Heading.N
+import uk.trantr.kata.marsroverk.navigation.Heading.*
 import uk.trantr.kata.marsroverk.navigation.Position
 
 object RoverSpec: Spek({
@@ -59,11 +58,11 @@ object RoverSpec: Spek({
                 }
             }
 
-            describe("to rotate left and then move forward") {
-                val dRover = rover.receive(arrayOf('l', 'f'))
+            describe("to sequence of rotations and movements") {
+                val dRover = rover.receive(arrayOf('l', 'f', 'l', 'f', 'l', 'f'))
 
                 it("will move northwards along the y axis") {
-                    assertEquals(Position(1, 2, N), dRover.position)
+                    assertEquals(Position(0, 1, S), dRover.position)
                 }
             }
         }
