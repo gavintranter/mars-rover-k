@@ -14,7 +14,7 @@ object HeadingSpec: Spek({
 
             describe("rotating clockwise") {
                 it("will give E(ast)") {
-                    assertEquals(Heading.E, heading.clockwise())
+                    assertEquals(E, heading.clockwise())
                 }
             }
             describe("rotating anticlockwise") {
