@@ -7,7 +7,7 @@ import uk.trantr.kata.marsroverk.navigation.Heading.*
 
 object HeadingSpec: Spek({
     describe("Heading") {
-        val coordinate by memoized { Coordinate(0, 0) }
+        val coordinate by memoized { Coordinate.ZERO_ZERO }
 
         describe("from N(orth)") {
             val heading by memoized { N }

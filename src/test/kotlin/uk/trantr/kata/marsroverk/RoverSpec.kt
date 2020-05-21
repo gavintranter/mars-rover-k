@@ -10,7 +10,7 @@ import uk.trantr.kata.marsroverk.navigation.Position
 
 object RoverSpec: Spek({
     describe("A Rover") {
-        val rover by memoized { Rover(Position(Coordinate(1, 1), E)) }
+        val rover by memoized { Rover(Position(Coordinate.ONE_ONE, E)) }
 
         describe("being initialised") {
             it("will be at the initial position") {
@@ -47,7 +47,7 @@ object RoverSpec: Spek({
                 val dRover = rover.receive(arrayOf('r', 'r', 'r', 'r'))
 
                 it("will be heading E(ast)") {
-                    assertEquals(Position(Coordinate(1, 1), E), dRover.position)
+                    assertEquals(Position(Coordinate.ONE_ONE, E), dRover.position)
                 }
             }
 
