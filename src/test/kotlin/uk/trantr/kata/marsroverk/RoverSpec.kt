@@ -14,7 +14,7 @@ object RoverSpec: Spek({
 
         describe("being initialised") {
             it("will be at the initial position") {
-                assertEquals(Position(Coordinate(1, 1), E), rover.position)
+                assertEquals(Position(Coordinate.ONE_ONE, E), rover.position)
             }
         }
 
@@ -55,7 +55,7 @@ object RoverSpec: Spek({
                 val dRover = rover.receive(arrayOf('l', 'l', 'l', 'l'))
 
                 it("will be heading E(ast)") {
-                    assertEquals(Position(Coordinate(1, 1), E), dRover.position)
+                    assertEquals(Position(Coordinate.ONE_ONE, E), dRover.position)
                 }
             }
 
@@ -63,7 +63,7 @@ object RoverSpec: Spek({
                 val dRover = rover.receive(arrayOf('l', 'l', 'r', 'l', 'r'))
 
                 it("will be heading N(orth))") {
-                    assertEquals(Position(Coordinate(1, 1), N), dRover.position)
+                    assertEquals(Position(Coordinate.ONE_ONE, N), dRover.position)
                 }
             }
 
@@ -71,7 +71,7 @@ object RoverSpec: Spek({
                 val dRover = rover.receive(arrayOf('b', 'l', 'f', 'l', 'b', 'f', 'l', 'f', 'r', 'b'))
 
                 it("will move northwards along the y axis") {
-                    assertEquals(Position(Coordinate(1, 1), W), dRover.position)
+                    assertEquals(Position(Coordinate.ONE_ONE, W), dRover.position)
                 }
             }
         }
